@@ -19,7 +19,25 @@ describe('BasicComponent', () => {
     fixture.detectChanges();
   });
 
-  it('should create', () => {
-    expect(component).toBeTruthy();
+  test(`should initialized with 'initial text'`, () => {
+    component.ngOnInit();
+    expect(component.text).toEqual('initial text');
   });
+
+  test('should reflect other text if replaceText input is present after component initiation', () => {
+    const expectedText = 'text to replace';
+    component.replaceText = expectedText;
+    component.ngOnInit();
+
+    expect(component.text).toEqual(expectedText);
+  });
+
+  test(`should change display text to 'button clicked' after process button pressed`, () => {
+    const expectedText = 'button clicked';
+
+    component.processButton();
+
+    expect(component.text).toEqual(expectedText);
+  });
+
 });

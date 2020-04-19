@@ -1,6 +1,8 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { ContainerComponent } from './container.component';
+import { NO_ERRORS_SCHEMA } from '@angular/core';
+import { BasicComponent } from '../basic/basic.component';
 
 describe('ContainerComponent', () => {
   let component: ContainerComponent;
@@ -8,7 +10,11 @@ describe('ContainerComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ ContainerComponent ]
+      declarations: [
+        ContainerComponent,
+        // BasicComponent
+      ],
+      schemas:[NO_ERRORS_SCHEMA]
     })
     .compileComponents();
   }));
@@ -19,7 +25,7 @@ describe('ContainerComponent', () => {
     fixture.detectChanges();
   });
 
-  it('should create', () => {
+  test('should create', () => {
     expect(component).toBeTruthy();
   });
 });

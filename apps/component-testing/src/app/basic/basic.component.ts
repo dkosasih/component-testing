@@ -6,9 +6,12 @@ import { Component, OnInit, Input } from '@angular/core';
   styleUrls: ['./basic.component.scss']
 })
 export class BasicComponent implements OnInit {
-
   @Input()
-  replaceText: string;
+  set replaceText(value: string) {
+    if (value) {
+      this.text = value;
+    }
+  }
 
   text = 'initial text';
   constructor() { }
@@ -17,9 +20,5 @@ export class BasicComponent implements OnInit {
     this.text = 'button clicked';
   }
 
-  ngOnInit() {
-    if (this.replaceText) {
-      this.text = this.replaceText;
-    }
-  }
+  ngOnInit() {}
 }

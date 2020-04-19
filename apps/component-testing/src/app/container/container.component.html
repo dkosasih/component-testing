@@ -1,3 +1,13 @@
 <p>
-  container works!
+  Welcome to testing component - Container component
 </p>
+
+<div style="padding: 5px;">
+  <button type="button" (click)="onButtonClick()">Click here</button>
+  You have clicked: <span data-testId="">{{clickLimitMessage || clickNum}} {{clickNum ? 'times' : ''}}</span>
+</div>
+
+<div style="border: 1px blue solid; padding: 5px;">
+  <component-testing-basic  [replaceText]="clickLimitMessage"></component-testing-basic>
+</div>
+
