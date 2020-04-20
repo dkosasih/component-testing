@@ -2,12 +2,21 @@
   Welcome to testing component - Container component
 </p>
 
-<div style="padding: 5px;">
-  <button type="button" (click)="onButtonClick()">Click here</button>
-  You have clicked: <span data-testId="">{{clickLimitMessage || clickNum}} {{clickNum ? 'times' : ''}}</span>
-</div>
+<ng-container *ngFor="let clickNum of [clickNum$ | async]">
+  <div style="padding: 5px;">
+    <button data-testId="btnNum" type="button" (click)="onButtonClick()">
+      Click here
+    </button>
+    You have clicked:
+    <span
+      [style.color]="clickNum > '3' ? 'red' : null"
+      data-testId="clickMessage"
+      >{{ clickNum > '0' ? clickNum : '' }} {{ clickNum > '0' ? 'times' : '' }}</span>
+  </div>
 
-<div style="border: 1px blue solid; padding: 5px;">
-  <component-testing-basic  [replaceText]="clickLimitMessage"></component-testing-basic>
-</div>
-
+  <div style="border: 1px blue solid; padding: 5px;">
+    <component-testing-basic
+      [replaceText]="clickNum > '0' ? clickNum : null"
+    ></component-testing-basic>
+  </div>
+</ng-container>

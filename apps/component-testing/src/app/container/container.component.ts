@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { of, BehaviorSubject, Subject, merge } from 'rxjs';
+import { share, scan, map, startWith } from 'rxjs/operators';
 
 @Component({
   selector: 'component-testing-container',
@@ -6,17 +8,20 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./container.component.scss']
 })
 export class ContainerComponent implements OnInit {
-  clickNum;
-  clickLimitMessage;
+  private incSubj$ = new BehaviorSubject(null);
+  clickNum$;
 
-  constructor() { }
+  constructor() {
+    this.clickNum$ = this.incSubj$.asObservable()
+      .pipe(
+        scan((acc, curr) => acc + curr, 0),
+        map(x => x > 3 ? 'more than 3' : x),
+        share()
+    );
+  }
 
   onButtonClick() {
-    this.clickNum = !this.clickNum ? 1 : this.clickNum + 1;
-
-    if (this.clickNum > 3) {
-      this.clickLimitMessage = 'more than 3';
-    }
+    this.incSubj$.next(1);
   }
 
   ngOnInit() {
