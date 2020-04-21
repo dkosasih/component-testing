@@ -4,19 +4,9 @@ import { BasicComponent } from './basic.component';
 
 describe('BasicComponent', () => {
   let component: BasicComponent;
-  let fixture: ComponentFixture<BasicComponent>;
-
-  beforeEach(async(() => {
-    TestBed.configureTestingModule({
-      declarations: [ BasicComponent ]
-    })
-    .compileComponents();
-  }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(BasicComponent);
-    component = fixture.componentInstance;
-    fixture.detectChanges();
+    component = new BasicComponent();
   });
 
   test(`should initialized with 'initial text'`, () => {
