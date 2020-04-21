@@ -46,4 +46,16 @@ describe('BasicComponent', () => {
     expect(pSut.nativeElement.textContent.trim())
       .toEqual(`Click button below to change the following text: ${expectedText}`);
   });
+
+  test(`should change display text to 'button clicked' after process button pressed - different way`, () => {
+    const expectedText = 'button clicked';
+    const btnProcess = fixture.debugElement.query(By.css('[data-testId="btnProcess"]'));
+
+    btnProcess.nativeElement.click();
+    fixture.detectChanges();
+
+    const pSut = fixture.debugElement.query(By.css('[data-testId="pContext"]'));
+    expect(pSut.nativeElement.textContent.trim())
+      .toEqual(`Click button below to change the following text: ${expectedText}`);
+  });
 });
