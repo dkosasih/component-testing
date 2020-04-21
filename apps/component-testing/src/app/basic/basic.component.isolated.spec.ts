@@ -16,13 +16,15 @@ describe('BasicComponent', () => {
 
   test('should reflect other text if replaceText input is present after component initiation', () => {
     const expectedText = 'text to replace';
-    component.replaceText = expectedText;
     component.ngOnInit();
+
+    component.replaceText = expectedText;
 
     expect(component.text).toEqual(expectedText);
   });
 
   test(`should change display text to 'button clicked' after process button pressed`, () => {
+    component.ngOnInit();
     const expectedText = 'button clicked';
 
     component.processButton();

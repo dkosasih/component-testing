@@ -14,9 +14,9 @@ describe('ContainerComponent', () => {
     TestBed.configureTestingModule({
       declarations: [
         ContainerComponent,
-        // BasicComponent
+        BasicComponent
       ],
-      schemas:[NO_ERRORS_SCHEMA]
+      // schemas:[NO_ERRORS_SCHEMA]
     })
     .compileComponents();
   }));
@@ -88,8 +88,8 @@ describe('ContainerComponent', () => {
     btnNum.nativeElement.click();
     fixture.detectChanges();
 
-    // const pSut = fixture.debugElement.query(By.css('[data-testId="pContext"]'));
-    // expect(pSut.nativeElement.textContent.trim())
-    //   .toEqual(`Click button below to change the following text: ${expectedText}`);
+    const pSut = fixture.debugElement.query(By.css('[data-testId="pContext"]'));
+    expect(pSut.nativeElement.textContent.trim())
+      .toEqual(`Click button below to change the following text: ${expectedText}`);
   });
 });

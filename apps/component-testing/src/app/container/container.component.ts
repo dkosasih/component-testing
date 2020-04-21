@@ -8,7 +8,7 @@ import { share, scan, map, startWith } from 'rxjs/operators';
   styleUrls: ['./container.component.scss']
 })
 export class ContainerComponent implements OnInit {
-  private incSubj$ = new BehaviorSubject(null);
+  private incSubj$ = new BehaviorSubject(0);
   clickNum$;
 
   constructor() {

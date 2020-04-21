@@ -5,7 +5,7 @@ import { By } from '@angular/platform-browser';
 
 describe('BasicComponent', () => {
   let component: BasicComponent;
-  let fixture: ComponentFixture<BasicComponent>;
+    let fixture: ComponentFixture<BasicComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
@@ -25,6 +25,7 @@ describe('BasicComponent', () => {
   });
 
   test('should reflect other text if replaceText input is present after component initiation', () => {
+    fixture.detectChanges();
     const expectedText = 'text to replace';
     component.replaceText = expectedText;
 
@@ -36,6 +37,7 @@ describe('BasicComponent', () => {
   });
 
   test(`should change display text to 'button clicked' after process button pressed`, () => {
+    fixture.detectChanges();
     const expectedText = 'button clicked';
 
     component.processButton();
@@ -48,6 +50,7 @@ describe('BasicComponent', () => {
   });
 
   test(`should change display text to 'button clicked' after process button pressed - different way`, () => {
+    fixture.detectChanges();
     const expectedText = 'button clicked';
     const btnProcess = fixture.debugElement.query(By.css('[data-testId="btnProcess"]'));
 

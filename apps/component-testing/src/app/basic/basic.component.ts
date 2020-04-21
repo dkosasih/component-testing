@@ -6,19 +6,20 @@ import { Component, OnInit, Input } from '@angular/core';
   styleUrls: ['./basic.component.scss']
 })
 export class BasicComponent implements OnInit {
+  text;
   @Input()
   set replaceText(value: string) {
     if (value) {
       this.text = value;
     }
   }
-
-  text = 'initial text';
   constructor() { }
 
   processButton() {
     this.text = 'button clicked';
   }
 
-  ngOnInit() {}
+  ngOnInit() {
+    this.text = 'initial text';
+  }
 }
